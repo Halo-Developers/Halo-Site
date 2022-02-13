@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import site
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,12 +43,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    """Apps inported from third party packages"""
+    # """Apps inported from third party packages"""
      # The following apps are required:
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    'crispy_forms',
+    # 'django-mapbox-location-field',
+    'ckeditor',
+    'ckeditor_uploader',
+    'betterforms',
+
+    # """ Installed apps """
+    # The following apps are installed:
+
+    'events',
 ]
 
 SITE_ID = 1
@@ -129,6 +141,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# Media files (Images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -163,3 +181,21 @@ AUTHENTICATION_BACKENDS = [
 #         }
 #     }
 # }
+
+
+
+# Mapbox key define
+# MAPBOX_KEY = "pk.eyJ1IjoibWlnaHR5c2hhcmt5IiwiYSI6ImNqd2duaW4wMzBhcWI0M3F1MTRvbHB0dWcifQ.1sDAD43q0ktK1Sr374xGfw"
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Ckeditor config
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = "event-details/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}

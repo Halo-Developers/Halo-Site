@@ -9,6 +9,9 @@ django-rest-framework = "*"
 django-filter = "*"
 markdown = "*"
 django-allauth = "*"
+django-betterforms = "*"
+django-crispy-forms = "*"
+pillow = "*"
 
 [dev-packages]
 
