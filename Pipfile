@@ -12,6 +12,8 @@ django-allauth = "*"
 django-betterforms = "*"
 django-crispy-forms = "*"
 pillow = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

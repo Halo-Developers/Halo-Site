@@ -63,7 +63,7 @@ class Event(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     location = LocationField(map_attrs={"style": "mapbox://styles/mightysharky/cjwgnjzr004bu1dnpw8kzxa72", "center": (17.031645, 51.106715)}, null=True, blank=True)
     points = models.PositiveIntegerField()
-    maximum_attende = models.PositiveIntegerField()
+    maximum_attendee = models.PositiveIntegerField()
     created_user = models.ForeignKey('auth.User', on_delete=models.CASCADE, blank=True, null=True, related_name='event_created_user')
     updated_user = models.ForeignKey('auth.User', on_delete=models.CASCADE, blank=True, null=True, related_name='event_updated_user')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -216,3 +216,7 @@ class UserCoin(models.Model):
     
     def get_absolute_url(self):
         return reverse('user-mark')
+
+# class EventUserLiking(models.Model):
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+#     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)

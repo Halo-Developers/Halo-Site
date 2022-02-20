@@ -44,11 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     # """Apps inported from third party packages"""
-     # The following apps are required:
+    
+    #github social auth app
+    'allauth', # new
+    'allauth.account', # new
+    'allauth.socialaccount', # new
+    'allauth.socialaccount.providers.github', # new
+    
+   
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
 
     'crispy_forms',
     # 'django-mapbox-location-field',
@@ -56,13 +60,18 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'betterforms',
 
+    # django rest framework
+    'rest_framework',
+    'corsheaders',
+
     # """ Installed apps """
     # The following apps are installed:
 
     'events',
+    'userauth',
 ]
 
-SITE_ID = 1
+SITE_ID = 2
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,6 +81,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'coreback.urls'
@@ -79,7 +89,7 @@ ROOT_URLCONF = 'coreback.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,6 +103,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'coreback.wsgi.application'
+
 
 
 # Database
@@ -169,21 +180,21 @@ AUTHENTICATION_BACKENDS = [
 """ Social auth providers """
 
 # # Provider specific settings
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         # For each OAuth based provider, either add a ``SocialApp``
-#         # (``socialaccount`` app) containing the required client
-#         # credentials, or list them here:
-#         'APP': {
-#             'client_id': '123',
-#             'secret': '456',
-#             'key': ''
-#         }
-#     }
-# }
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '123',
+            'secret': '456',
+            'key': ''
+        }
+    }
+}
 
 
-
+"""The github authapp 34162fed012b4abed8bdd5b7be6f3c80ac2f0700"""
 # Mapbox key define
 # MAPBOX_KEY = "pk.eyJ1IjoibWlnaHR5c2hhcmt5IiwiYSI6ImNqd2duaW4wMzBhcWI0M3F1MTRvbHB0dWcifQ.1sDAD43q0ktK1Sr374xGfw"
 
@@ -199,3 +210,25 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     },
 }
+
+
+
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+LOGIN_REDIRECT_URL = 'home'
+
+
+#django rest framework settings
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
+
+CORS_ORIGIN_WHITELIST = [
+     'http://localhost:3000'
+]

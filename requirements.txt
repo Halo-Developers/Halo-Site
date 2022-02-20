@@ -1,2 +1,10 @@
 django-ckeditor
 django-mapbox-location-field
+djangorestframework
+django-filter
+markdown
+django-allauth
+django-ckeditor
+django-crispy-forms
+django-betterforms
+django-cors-headers
