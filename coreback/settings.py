@@ -69,6 +69,7 @@ INSTALLED_APPS = [
 
     'events',
     'userauth',
+    'api',
 ]
 
 SITE_ID = 2
