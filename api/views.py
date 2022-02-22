@@ -4,12 +4,26 @@ from rest_framework import viewsets
 # Create your views here.
 from .serializers import (
     EventSerializer,
-    EventCategorySerializer
+    EventCategorySerializer,
+    JobCategorySerializer,
+    EventMemberSerializer,
+    EventUserWhishList,
+    UserCoinSerializer,
+    EventAgendaSerializer,
+    EventImageSerializer,
+    EventJobCategoryLinkingSerializer
 )
 
 from events.models import (
-    EventCategory,
     Event,
+    EventCategory,
+    JobCategory,
+    EventAgenda,
+    EventJobCategoryLinking,
+    EventMember,
+    EventUserWishList,
+    UserCoin,
+    EventImage,
 )
 
 
