@@ -27,3 +27,32 @@ class SMS(models.Model):
     #     code_string = code
 
     #     return self.code
+
+
+"""This models contains data for Hackathon"""
+class Hackathon(models.Model):
+    """
+    The Hackathon model.
+    """
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    start_date = models.DateField()
+    end_date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'Hackathon {self.name}'
+
+    def get_absolute_url(self):
+        return reverse("hackathon-detail", kwargs={"pk": self.pk})
+
+
+"""This model contains Halodevs members subscriptions"""
+class Subscription(models.Model):
+    """
+    Model for subscription
+    """
+    name = models.CharField(max_length=200)
+    description = models.TextField()

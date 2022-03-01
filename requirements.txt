@@ -8,3 +8,13 @@ django-ckeditor
 django-crispy-forms
 django-betterforms
 django-cors-headers
+django-phonenumbers
+pillow
+flakes8
+black
+isort
+psycog  
+django-countries
+django-autoslug
+django-filter
+phonenumbers
