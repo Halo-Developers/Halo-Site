@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
+import PrimaryAppBar from './Components/AppBar';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-       Home Page of Halodevs
+        <PrimaryAppBar/>
       </div>
     );
   }
